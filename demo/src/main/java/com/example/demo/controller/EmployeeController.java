@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//compiler->source code->machine code
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:4200")
@@ -50,6 +50,7 @@ public class EmployeeController {
     }
     @GetMapping("/getUsers")
     public ResponseEntity <List<Employee>> getUsers(){
+      // List<Employee> employees= new ArrayList<>();
       // List<Employee> employees= new ArrayList<>();
         List<Employee> employees = employeeService.getAllEmployees();
 //        employees.add(new Employee(1, "Preetha", "Developer"));
