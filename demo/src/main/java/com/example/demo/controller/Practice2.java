@@ -6,17 +6,25 @@ public class Practice2 {
     String name;
    public Practice2(String name){
         this.name = name;
+        System.out.println("Hello constructor");
+    }
+
+    public void get(){
+       System.out.println(name);
+
+
     }
     public static void main(String[] args){
         Practice2 practice2 = new Practice2("preetha");
-        System.out.println(practice2);
+        practice2.get();
+       /* System.out.println(practice2);
         String s1 = "Java";
         String s2 = "Java";
         String s3 = new String("Java");
 
         System.out.println(s1==s2);
         System.out.println(s1==s3);
-        System.out.println(s2.equals(s3));
+        System.out.println(s2.equals(s3));*/
 //        Scanner sc = new Scanner(System.in);
 //        System.out.println("Enter your name:");
 //        String name = sc.nextLine();
