@@ -29,7 +29,9 @@ public class ExceptionHandling extends Exception {
         //  exceptionHandling.numberFormatExp();
         //   exceptionHandling.StringoutofBoundExp();
         //InvalidAgeException invalidAgeException= new InvalidAgeException("Hello");
-        InvalidAgeException.customExp();
+       // InvalidAgeException.customExp();
+       // exceptionHandling.multipleExceptions();
+        exceptionHandling.finallyReturn();
 
     }
 
@@ -194,27 +196,71 @@ public class ExceptionHandling extends Exception {
             System.out.println("Invalid string index");
         }
     }
+
+    //Multiple Exceptions
+    public void multipleExceptions() {
+        try {
+            String value = "abc";
+            int number = Integer.parseInt(value);
+            int result = 10 / number;
+            System.out.println(result);
+        } catch (NumberFormatException | ArithmeticException e) {
+            System.out.println("Exception: " + e.getMessage());
+        }
+    }
+
+    //finally + return
+          static int test() {
+            try {
+                return 10;
+            } finally {
+                System.out.println("Finally executed");
+            }
+        }
+        public void finallyReturn() {
+            int result = test();
+            System.out.println(result);
+        }
 }
 class InvalidAgeException extends Exception {
 
-    public InvalidAgeException(String message){
+    public InvalidAgeException(String message) {
         super(message);
     }
+
     //Custom Exception
-    static void checkAge(int age) throws InvalidAgeException{
-        if(age < 18){
+    static void checkAge(int age) throws InvalidAgeException {
+        if (age < 18) {
             throw new InvalidAgeException("Age must be above 18");
         }
         System.out.println("Valid age");
     }
-    public static void customExp(){
+
+    public static void customExp() {
         try {
             checkAge(15);
         } catch (InvalidAgeException e) {
             System.out.println(e.getMessage());
         }
     }
-
-    //custom runtime exception
 }
+    //custom runtime exception
+    class InvalidAmountException extends Exception {
+        public InvalidAmountException(String message) {
+            super(message);
+        }
+        static void withdraw(int amount) throws InvalidAmountException {
+            if (amount <= 0) {
+                throw new InvalidAmountException("Amount must be greater than zero");
+            }
+            System.out.println("Withdrawal successful");
+        }
+        public static void main(String[] args) {
+            try {
+                withdraw(-500);
+            } catch (InvalidAmountException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
 
